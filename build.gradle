@@ -1,0 +1,24 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
+	id 'java'
+	id "com.google.cloud.tools.jib" version "1.0.2"
+}
+
+group = 'ro.trc.service'
+version = '0.0.2'
+sourceCompatibility = '11'
+
+apply plugin: 'io.spring.dependency-management'
+apply from: "gradle/docker.gradle"
+
+repositories {
+	mavenCentral()
+	gradlePluginPortal()
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

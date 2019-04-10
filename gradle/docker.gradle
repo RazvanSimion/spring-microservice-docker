@@ -1,0 +1,24 @@
+jib {
+    from {
+        image = "openjdk:11-jre-slim-stretch"
+    }
+    to {
+        image = "repository.trencadis.ro:18081/spring-microservice-docker:$version"
+        auth {
+            username = 'admin'
+            password = 'Trencad1s'
+        }
+    }
+    container {
+        workingDirectory = "/"
+        entrypoint = ["sh", "-c", "chmod +x /entrypoint.sh && sync && . /entrypoint.sh"]
+        ports = ["8080"]
+        environment = [
+                SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS",
+                DEMO_SLEEP: "0"
+        ]
+        useCurrentTimestamp = true
+    }
+    allowInsecureRegistries = true
+    extraDirectory = file('src/main/jib')
+}
