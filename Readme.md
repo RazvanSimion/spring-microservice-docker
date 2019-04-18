@@ -12,3 +12,17 @@ gradlew clean bootJar jib
 docker login [nexus ip]:[nexus port]
 docker run -d -p 8080:8080 [nexus ip]:[nexus port]/spring-microservice-docker:[version]
 
+# Run Kubernetes
+## Create secret to authenticate to private docker registry
+kubectl create secret docker-registry trccred --docker-server=[repository ip]:[repository port] --docker-username=[username] --docker-password=[user password] --docker-email=[user email]
+
+## Optional - Export secret
+kubectl get secret trccred --output=yaml
+
+## Service start
+minikube service spring-microservice
+
+## Deploy to Kubernetes
+kubectl apply -f ./kubernetes/
+
+
