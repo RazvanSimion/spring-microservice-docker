@@ -1,3 +1,8 @@
+# Simple Spring Boot microservice deployed in Kubernetes using Docker and Nexus 
+This is the repository for the following stories:  
+    - https://medium.com/@simionrazvan/simple-spring-boot-microservice-deployed-in-kubernetes-using-docker-and-nexus-part-1-b581e3ca8916
+    - https://medium.com/@simionrazvan/simple-spring-boot-microservice-deployed-in-kubernetes-using-docker-and-nexus-part-2-25dc2a3982cf
+
 # Build Jar
 
 gradlew clean bootJar
